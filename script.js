@@ -104,12 +104,97 @@ const faq = [
 
 const feedback = [
   [
+    "Pengguna tidak dapat login ke IPOS 5 melalui komputer",
+    "Periksa internet dan data login. Pastikan menggunakan domain yang sesuai. Development melalui https://iam.posindonesia.co.id/ (IAM Development), sedangkan production melalui https://identity.posindonesia.co.id/realms/PosIND/account/ (Identity Production). Jika masih gagal, simpan pesan error dan hubungi admin.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Akun belum diatur untuk kode OTP atau autentikasi.",
+    "Ikuti juknis pengaturan OTP dan penggunaan IPOS 5 yang tersedia di folder panduan berikut : https://drive.google.com/drive/folders/1-u8koxQu15V_E9_bez5y_mQF-vIkoLO2?",
+    "Tindak lanjut tercatat",
+  ],
+  [
     "Pembatalan dan pencarian per koli pada kiriman multikoli",
     "Periksa resi dan koli yang dipilih. Jika pilihan per koli belum tersedia, catat detailnya dan laporkan kepada admin.",
     "Belum terkonfirmasi",
   ],
   [
-    "Tidak bisa login (3 laporan)",
+    "Username atau password dinyatakan tidak valid meskipun menggunakan kredensial Wahana.",
+    "Pastikan domain development dan production tidak tertukar. Jika masih gagal, tunggu pemeriksaan tim referensi dan laporkan kendala.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Sejumlah pengguna belum dapat mengakses IPOS 5 saat go-live.",
+    "Akses production pada tahap awal dibatasi untuk pengguna dalam daftar go-live KCU Bandung dan KCP di bawahnya. Periksa daftar pengguna yang telah ditentukan.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Apakah IPOS 5 sudah mendukung semua layanan kiriman?",
+    "Implementasi tahap awal menggunakan NIPOS dan IPOS 5 secara paralel. IPOS 5 terlebih dahulu digunakan untuk layanan SameDay ritel sambil dilakukan evaluasi.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Mengapa role pengguna belum muncul setelah didaftarkan?",
+    "Pengguna diminta mencatat akun yang belum aktif dan mengirimkan informasi atau tangkapan layar untuk diperiksa.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Mengapa tombol jenis layanan tidak bisa diklik?",
+    "Periksa dan isi kode pos tujuan terlebih dahulu, kemudian berat dan volume kiriman, sebelum memilih jenis layanan. Jika tetap gagal, kirim tangkapan layar.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Bagaimana cara mendapatkan aplikasi IPOS 5 mobile?",
+    "Isi email yang akan digunakan pada spreadsheet pendaftaran, kemudian periksa email dan Google Play Store untuk memperoleh undangan atau akses aplikasi.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Aplikasi belum dapat diunduh meskipun data pengguna telah didaftarkan.",
+    "Coba akses tautan pengujian aplikasi di Google Play, lengkapi email yang digunakan, dan pastikan Developer Mode tidak aktif.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Apa yang harus dilakukan jika kode authenticator tidak muncul?",
+    "Kirim tangkapan layar ke grup agar tim pusat dapat membantu pemeriksaan.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Akun mitra atau Oranger Loket gagal melakukan login setelah OTP dikirim melalui admin-pci.",
+    "Periksa proses aktivasi MFA. Untuk akun kemitraan yang belum mengatur OTP atau password baru, hubungi Mandukum/Bagian Umum untuk reset password atau pengiriman OTP melalui menu IAM Bulk Action pada admin-kemitraan.pci.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Menu bagging, manifest, atau package tidak tersedia setelah login.",
+    "Pastikan mengakses domain production, yaitu https://app.posindonesia.co.id/ , bukan domain development. Periksa juga role pengguna dan spreadsheet pendaftaran role.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Pengguna Oranger Antaran tidak dapat mengunduh APK karena muncul keterangan aplikasi tidak tersedia.",
+    "Coba tautan pengujian aplikasi, pastikan email sesuai dengan yang terdaftar pada spreadsheet, dan minta tim terkait memeriksa jika masih gagal.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Email reset password atau kode OTP belum diterima oleh petugas Oranger Antaran.",
+    "Cocokkan email yang digunakan dengan email yang terdaftar pada spreadsheet, lalu coba kembali. Jika belum diterima, diperlukan pemeriksaan lebih lanjut",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Kode OTP selalu dinyatakan salah saat dimasukkan.",
+    "Gunakan kode OTP segera karena masa berlakunya disebut hanya 30 detik. Jika tetap gagal, minta bantuan untuk pemeriksaan atau pengaturan ulang authenticator.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Pengguna berhasil login, tetapi menu transaksi tidak tersedia.",
+    "Tim menyampaikan bahwa role pengguna sedang ditambahkan. Setelah perubahan role, pengguna perlu mencoba kembali dan memastikan menu yang diperlukan sudah tersedia.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Akun KCP tidak dapat dibuka meskipun Manpel telah membuka rekap.",
+    "Tim meminta konfirmasi kondisi pada akun BM dan menyampaikan bahwa role sedang ditambahkan. Hasil akhir penyelesaian belum terkonfirmasi dalam bagian chat yang ditemukan.",
+    "Tindak lanjut tercatat",
+  ],
+  [
+    "Tidak bisa login",
     "Periksa internet dan data login. Jika masih gagal, simpan pesan error dan hubungi admin.",
     "Belum terkonfirmasi",
   ],
@@ -218,13 +303,27 @@ const esc = (s) =>
         c
       ],
   );
+
+// Otomatis jadikan URL sebagai tautan pada semua jawaban FAQ dan feedback.
+const renderTextWithLinks = (value) => {
+  const safeText = esc(value);
+  const urlPattern = /https?:\/\/[^\s<>"']+/gi;
+
+  return safeText.replace(urlPattern, (rawUrl) => {
+    const match = rawUrl.match(/^(.*?)([.,!?;:)\]]*)$/);
+    const url = match ? match[1] : rawUrl;
+    const trailing = match ? match[2] : "";
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailing}`;
+  });
+};
 function rows() {
   return [
     ...faq.map(([cat, q, a]) => ({ cat, q, a, kind: "faq" })),
     ...feedback.map(([q, a, status]) => ({
       cat: "Feedback",
       q,
-      a: `<p><b>Saran langkah:</b> ${esc(a)}</p><p><b>Status tindak lanjut pada catatan:</b> ${esc(status)}. Jika masalah masih terjadi, konfirmasi kepada supervisor/admin.</p>`,
+      a: `<p><b>Saran langkah:</b> ${renderTextWithLinks(a)}</p>
+      <p><b>Status tindak lanjut pada catatan:</b> ${renderTextWithLinks(status)}. Jika masalah masih terjadi, konfirmasi kepada supervisor/admin.</p>`,
       kind: "feedback",
     })),
   ];
@@ -239,7 +338,7 @@ function render() {
   list.innerHTML = data
     .map(
       (x) =>
-        `<article class="item"><button class="question" aria-expanded="false"><span class="q">${x.kind === "feedback" ? "!" : "?"}</span><span class="qt"><span class="tag ${x.cat.toLowerCase().replace(/ /g, "-")}">${x.cat === "Feedback" ? "Kendala & Feedback" : x.cat}</span><br>${esc(x.q)}</span><span class="chev">⌄</span></button><div class="answer" hidden>${x.kind === "feedback" ? x.a : `<p>${esc(x.a)}</p>`}</div></article>`,
+        `<article class="item"><button class="question" aria-expanded="false"><span class="q">${x.kind === "feedback" ? "!" : "?"}</span><span class="qt"><span class="tag ${x.cat.toLowerCase().replace(/ /g, "-")}">${x.cat === "Feedback" ? "Kendala & Feedback" : x.cat}</span><br>${esc(x.q)}</span><span class="chev">⌄</span></button><div class="answer" hidden>${x.kind === "feedback" ? x.a : `<p>${renderTextWithLinks(x.a)}</p>`}</div></article>`,
     )
     .join("");
   count.textContent = `${data.length} pertanyaan ditemukan`;
