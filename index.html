@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FAQ & Feedback IPOS5</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <small>PUSAT BANTUAN OPERASIONAL</small>
+        <h1>FAQ & Feedback IPOS5</h1>
+        <p>
+          Panduan operasional First Mile, Middle Mile, Last Mile, serta daftar
+          kendala dan tindak lanjut.
+        </p>
+        <input
+          id="search"
+          type="search"
+          placeholder="Cari FAQ, kendala, atau tindak lanjut…"
+        />
+      </div>
+    </header>
+    <main class="wrap">
+      <nav id="filters">
+        <button class="active" data-cat="Semua">Semua</button
+        ><button data-cat="First Mile">First Mile</button
+        ><button data-cat="Middle Mile">Middle Mile</button
+        ><button data-cat="Last Mile">Last Mile</button
+        ><button data-cat="Feedback">Kendala & Feedback</button>
+      </nav>
+      <div class="heading">
+        <div>
+          <h2>Pertanyaan & informasi</h2>
+          <p id="count"></p>
+        </div>
+        <button id="toggle">Buka semua</button>
+      </div>
+      <section id="list"></section>
+      <p id="empty" hidden>
+        Tidak ada hasil. Coba kata kunci atau kategori lain.
+      </p>
+      <aside>
+        <b>Catatan status</b>
+        <p>
+          Status dan tindak lanjut feedback ditampilkan sesuai data yang
+          diberikan. Baris yang belum memiliki tindak lanjut atau status
+          crosscheck tidak dianggap selesai; konfirmasi status aktual kepada tim
+          terkait.
+        </p>
+      </aside>
+    </main>
+    <footer class="wrap">IPOS5 · FAQ dan log feedback operasional</footer>
+    <script src="script.js"></script>
+  </body>
+</html>

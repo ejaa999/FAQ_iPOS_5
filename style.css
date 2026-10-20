@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+:root {
+  --navy: #102d52;
+  --blue: #1e67b1;
+  --text: #1e293b;
+  --muted: #64748b;
+  --line: #e2e8f0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--text);
+  background: #f5f8fc;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 1050px;
+  margin: auto;
+  padding: 0 22px;
+}
+header {
+  background: linear-gradient(130deg, #102d52, #155e9f 68%, #2585c6);
+  color: white;
+  padding: 48px 0 70px;
+}
+header small {
+  color: #cce5ff;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
+  line-height: 1.1;
+  margin: 12px 0;
+}
+header p {
+  color: #e0edfa;
+}
+header input {
+  width: min(750px, 100%);
+  padding: 16px;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+}
+main.wrap {
+  margin-top: -28px;
+  position: relative;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 13px;
+  border-radius: 15px;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+nav button {
+  border: 0;
+  border-radius: 9px;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 10px 13px;
+  font-weight: 600;
+}
+nav button.active {
+  background: var(--blue);
+  color: white;
+}
+.heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin: 32px 2px 16px;
+  gap: 10px;
+}
+.heading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+.heading p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+#toggle {
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  font-weight: 700;
+}
+#list {
+  display: grid;
+  gap: 12px;
+}
+.item {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+}
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left;
+  padding: 18px;
+  border: 0;
+  background: white;
+  color: var(--navy);
+  font-weight: 700;
+}
+.question:hover {
+  background: #f8fbff;
+}
+.q {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #eaf3ff;
+  color: var(--blue);
+}
+.qt {
+  flex: 1;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  background: #eaf3ff;
+  color: #1e67b1;
+  margin-bottom: 5px;
+}
+.tag.middle-mile {
+  background: #fff3dc;
+  color: #a45d06;
+}
+.tag.last-mile {
+  background: #e5f8ef;
+  color: #16835b;
+}
+.tag.feedback {
+  background: #fce7f3;
+  color: #9d174d;
+}
+.tag.first-mile {
+  background: #e0f2fe;
+  color: #075985;
+}
+.answer {
+  padding: 0 20px 20px 61px;
+  color: #475569;
+  font-size: 0.94rem;
+}
+.answer p {
+  margin: 0 0 7px;
+}
+.chev {
+  color: #64748b;
+}
+.item.open .chev {
+  transform: rotate(180deg);
+}
+.status {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 700;
+}
+.status.done {
+  background: #dcfce7;
+  color: #166534;
+}
+.status.pending {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.status.dev {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+aside {
+  margin: 28px 0;
+  padding: 18px 20px;
+  background: #fffaf0;
+  border: 1px solid #f5dfad;
+  border-radius: 12px;
+  color: #754d12;
+  font-size: 0.88rem;
+}
+aside p {
+  margin: 5px 0 0;
+}
+#empty {
+  background: white;
+  padding: 28px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  color: var(--muted);
+}
+footer {
+  padding-top: 20px;
+  padding-bottom: 28px;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  border-top: 1px solid var(--line);
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .wrap {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  header {
+    padding-top: 36px;
+  }
+  .heading {
+    align-items: start;
+  }
+  .question {
+    padding: 15px 12px;
+  }
+  .answer {
+    padding: 0 14px 17px 55px;
+  }
+}
